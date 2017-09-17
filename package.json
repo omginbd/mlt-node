@@ -1,6 +1,6 @@
 {
   "name": "mlt-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Typescript port of the BYU CS 478 machine learning toolkit",
   "main": "dist/index.bundle.js",
   "scripts": {
