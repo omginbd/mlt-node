@@ -1,8 +1,9 @@
 {
   "name": "mlt-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Typescript port of the BYU CS 478 machine learning toolkit",
   "main": "dist/index.bundle.js",
+  "types": "dist/typings/index.d.ts",
   "scripts": {
     "start": "node dist/index.bundle.js",
     "transpile": "webpack -w",
