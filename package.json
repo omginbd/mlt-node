@@ -1,13 +1,14 @@
 {
   "name": "mlt-ts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Typescript port of the BYU CS 478 machine learning toolkit",
   "main": "dist/index.bundle.js",
   "types": "dist/typings/index.d.ts",
   "scripts": {
     "start": "node dist/index.bundle.js",
     "transpile": "webpack -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc --outDir dist src/index.ts -t \"ES6\" -d"
   },
   "repository": {
     "type": "git",
