@@ -3,7 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "declaration": true,
-    "declarationDir": "typings",
+    "declarationDir": "dist/typings",
     "rootDir": "src",
     "outDir": "dist",
     "moduleResolution": "node",
@@ -12,7 +12,6 @@
     ],
     "types": [
       "node"
-    ],
-    "sourceMap": true
+    ]
   }
 }

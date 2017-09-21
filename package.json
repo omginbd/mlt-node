@@ -1,34 +1,39 @@
 {
-  "name": "mlt-ts",
-  "version": "0.0.4",
-  "description": "Typescript port of the BYU CS 478 machine learning toolkit",
-  "main": "dist/index.bundle.js",
+  "name": "mlt-node",
+  "version": "0.0.1",
+  "description": "Node port of the BYU CS 478 machine learning toolkit written in Typescript",
+  "main": "dist/index.js",
   "types": "dist/typings/index.d.ts",
   "scripts": {
-    "start": "node dist/index.bundle.js",
-    "transpile": "webpack -w",
+    "build": "rm -rf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "tsc --outDir dist src/index.ts -t \"ES6\" -d"
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dansteren/mlt-ts.git"
+    "url": "git+https://github.com/omginbd/mlt-node.git"
   },
   "bugs": {
-    "url": "https://github.com/dansteren/mlt-ts/issues"
+    "url": "https://github.com/omginbd/mlt-node/issues"
   },
-  "homepage": "https://github.com/dansteren/mlt-ts#readme",
-  "author": "Dan Steren <daniel.d.steren@gmail.com> (https://github.com/dansteren)",
+  "homepage": "https://github.com/omginbd/mlt-node#readme",
+  "contributors": [
+    "Dan Steren <daniel.d.steren@gmail.com> (https://github.com/dansteren)",
+    "Michael Collier <colliermichaelp@gmail.com> (https://github.com/omginbd)"
+  ],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^8.0.28",
-    "ts-loader": "^2.3.6",
     "typescript": "^2.5.2",
-    "webpack": "^3.5.6"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0"
   },
   "keywords": [
     "machine learning",
     "typescript",
-    "byu"
+    "byu",
+    "node"
   ]
 }

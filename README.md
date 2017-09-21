@@ -1,13 +1,13 @@
-# mlt-ts
+# mlt-node
 
-Typescript port of the BYU CS 478 [machine learning toolkit](http://axon.cs.byu.edu/~martinez/classes/478/stuff/Toolkit.html)
+Node port of the BYU CS 478 [machine learning toolkit](http://axon.cs.byu.edu/~martinez/classes/478/stuff/Toolkit.html) written in typescript
 
 ## Getting Started
 
-1. Install mlt-ts
+1. Install mlt-node
 
 ```bash
-npm install mlt-ts
+npm install mlt-node
 ```
 2. Download some datasets
 ```bash
@@ -16,7 +16,7 @@ wget http://axon.cs.byu.edu/~martinez/classes/478/stuff/iris.arff -P datasets/
 ```
 3. Write a program to take in parameters and call the toolkit. This can be as simple as:
 ```typescript
-import { SupervisedLearner, BaselineLearner, run } from './malt';
+import { SupervisedLearner, BaselineLearner, run } from 'mlt-node';
 
 function getLearner(model: string): SupervisedLearner {
   switch (model) {
@@ -51,7 +51,7 @@ node compiledProgram.js -L baseline -A datasets/iris.arff -E training
 Creating new learners is as simple as extending the SupervisedLearner class provided by the toolkit. Just make sure to override the `train()` and `predict()` functions of the `SupervisedLearner` base class.
 
 ```typescript
-import { Matrix, SupervisedLearner } from 'mlt-ts';
+import { Matrix, SupervisedLearner } from 'mlt-node';
 
 class MyNewLearner extends SupervisedLearner {
 

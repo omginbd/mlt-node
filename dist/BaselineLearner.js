@@ -1,11 +1,13 @@
-import SupervisedLearner from './SupervisedLearner';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const SupervisedLearner_1 = require("./SupervisedLearner");
 /**
  * For nominal labels, this model simply returns the majority class. For
  * continuous labels, it returns the mean value.
  * If the learning model you're using doesn't do as well as this one,
  * it's time to find a new learning model.
  */
-export default class BaselineLearner extends SupervisedLearner {
+class BaselineLearner extends SupervisedLearner_1.default {
     train(features, labels) {
         this.m_labels = [];
         for (let i = 0; i < labels.cols(); i++) {
@@ -21,3 +23,4 @@ export default class BaselineLearner extends SupervisedLearner {
         }
     }
 }
+exports.default = BaselineLearner;

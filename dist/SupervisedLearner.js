@@ -1,4 +1,6 @@
-export default class SupervisedLearner {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class SupervisedLearner {
     /**
      * The model must be trained before you call this method. If the label is nominal,
      * it returns the predictive accuracy. If the label is continuous, it returns
@@ -62,3 +64,4 @@ export default class SupervisedLearner {
         }
     }
 }
+exports.default = SupervisedLearner;

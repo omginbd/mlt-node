@@ -1,5 +1,7 @@
-import * as fs from 'fs';
-export default class Matrix {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs = require("fs");
+class Matrix {
     // Copies the specified portion of that matrix into this matrix
     constructor(that, rowStart, colStart, rowCount, colCount) {
         this.m_data = [];
@@ -320,3 +322,4 @@ export default class Matrix {
         }
     }
 }
+exports.default = Matrix;

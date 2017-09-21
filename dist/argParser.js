@@ -1,4 +1,6 @@
-import * as fs from 'fs';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs = require("fs");
 /**
  * Prints help information and commandline usage
  */
@@ -18,7 +20,7 @@ function printUsage() {
 /**
  * Processes command line arguments. Exits if args are invalid.
  */
-export function parseArgs() {
+function parseArgs() {
     const args = process.argv.slice(2);
     if (args.length === 0) {
         printUsage();
@@ -93,3 +95,4 @@ export function parseArgs() {
     }
     return result;
 }
+exports.parseArgs = parseArgs;
