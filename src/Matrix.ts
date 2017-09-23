@@ -43,6 +43,13 @@ export default class Matrix {
   }
 
   /**
+   * Returns the relation name
+   */
+  relationName() {
+    return this.m_relation_name
+  }
+
+  /**
    * Adds a copy of the specified portion of that matrix to this matrix
    */
   add(that: Matrix, rowStart: number, colStart: number, rowCount: number) {

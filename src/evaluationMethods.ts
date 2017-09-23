@@ -8,9 +8,23 @@ export function trainingEval(
 ) {
   console.log('Calculating accuracy on training set...')
   // Copy all ARFF data except the last column into a new 'features' matrix.
-  const features: Matrix = new Matrix(data, 0, 0, data.rows(), data.cols() - 1)
+  const features: Matrix = new Matrix(
+    data,
+    0,
+    0,
+    data.rows(),
+    data.cols() - 1,
+    data.relationName() + ' features'
+  )
   // Copy the last column in the ARFF data into a labels matrix.
-  const labels = new Matrix(data, 0, data.cols() - 1, data.rows(), 1)
+  const labels = new Matrix(
+    data,
+    0,
+    data.cols() - 1,
+    data.rows(),
+    1,
+    data.relationName() + ' labels'
+  )
   const confusion = new Matrix()
   const startTime = Date.now()
   learner.train(features, labels)
@@ -40,8 +54,22 @@ export function staticEval(
   console.log('Calculating accuracy on separate test set...')
   console.log('Test set name: ' + testFileName)
   console.log('Number of test instances: ' + testData.rows())
-  const features = new Matrix(data, 0, 0, data.rows(), data.cols() - 1)
-  const labels = new Matrix(data, 0, data.cols() - 1, data.rows(), 1)
+  const features = new Matrix(
+    data,
+    0,
+    0,
+    data.rows(),
+    data.cols() - 1,
+    data.relationName() + ' features'
+  )
+  const labels = new Matrix(
+    data,
+    0,
+    data.cols() - 1,
+    data.rows(),
+    1,
+    data.relationName() + ' labels'
+  )
   const startTime = Date.now()
   learner.train(features, labels)
   const elapsedTime = Date.now() - startTime
@@ -53,14 +81,16 @@ export function staticEval(
     0,
     0,
     testData.rows(),
-    testData.cols() - 1
+    testData.cols() - 1,
+    testData.relationName() + ' testFeatures'
   )
   const testLabels = new Matrix(
     testData,
     0,
     testData.cols() - 1,
     testData.rows(),
-    1
+    1,
+    testData.relationName + ' testLabels'
   )
   const confusion = new Matrix()
   const testAccuracy = learner.measureAccuracy(
@@ -90,21 +120,37 @@ export function randomEval(
   console.log('Percentage used for testing: ' + (1 - trainPercent))
   data.shuffle()
   const trainSize: number = Math.floor(trainPercent * data.rows())
-  const trainFeatures = new Matrix(data, 0, 0, trainSize, data.cols() - 1)
-  const trainLabels = new Matrix(data, 0, data.cols() - 1, trainSize, 1)
+  const trainFeatures = new Matrix(
+    data,
+    0,
+    0,
+    trainSize,
+    data.cols() - 1,
+    data.relationName() + ' trainFeatures'
+  )
+  const trainLabels = new Matrix(
+    data,
+    0,
+    data.cols() - 1,
+    trainSize,
+    1,
+    data.relationName() + ' trainLabels'
+  )
   const testFeatures = new Matrix(
     data,
     trainSize,
     0,
     data.rows() - trainSize,
-    data.cols() - 1
+    data.cols() - 1,
+    data.relationName() + ' testFeatures'
   )
   const testLabels = new Matrix(
     data,
     trainSize,
     data.cols() - 1,
     data.rows() - trainSize,
-    1
+    1,
+    data.relationName() + ' testLabels'
   )
   const startTime = Date.now()
   learner.train(trainFeatures, trainLabels)
@@ -147,21 +193,37 @@ export function crossEval(
     for (let i = 0; i < folds; i++) {
       const begin = i * data.rows() / folds
       const end = (i + 1) * data.rows() / folds
-      const trainFeatures = new Matrix(data, 0, 0, begin, data.cols() - 1)
-      const trainLabels = new Matrix(data, 0, data.cols() - 1, begin, 1)
+      const trainFeatures = new Matrix(
+        data,
+        0,
+        0,
+        begin,
+        data.cols() - 1,
+        data.relationName() + 'trainFeatures'
+      )
+      const trainLabels = new Matrix(
+        data,
+        0,
+        data.cols() - 1,
+        begin,
+        1,
+        data.relationName() + ' trainLabels'
+      )
       const testFeatures = new Matrix(
         data,
         begin,
         0,
         end - begin,
-        data.cols() - 1
+        data.cols() - 1,
+        data.relationName() + ' testFeatures'
       )
       const testLabels = new Matrix(
         data,
         begin,
         data.cols() - 1,
         end - begin,
-        1
+        1,
+        data.relationName() + ' testLabels'
       )
       trainFeatures.add(data, end, 0, data.rows() - end)
       trainLabels.add(data, end, data.cols() - 1, data.rows() - end)
