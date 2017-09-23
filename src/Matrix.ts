@@ -102,7 +102,7 @@ export default class Matrix {
             const firstToken = line.split(' ')[0].toUpperCase()
             switch (firstToken) {
               case '@RELATION':
-                const datasetName = line.split(' ')[1].toUpperCase()
+                this.m_relation_name = line.split(' ')[1].toUpperCase()
                 break
               case '@ATTRIBUTE':
                 let ste = new Map<string, number>()
@@ -329,7 +329,7 @@ export default class Matrix {
   }
 
   print() {
-    console.log('@RELATION Untitled\n')
+    console.log(`@RELATION ${this.m_relation_name}\n`)
     for (let i = 0; i < this.m_attr_name.length; i++) {
       console.log('@ATTRIBUTE ' + this.m_attr_name[i])
       const vals = this.valueCount(i)
