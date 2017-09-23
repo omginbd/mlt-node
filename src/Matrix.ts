@@ -17,12 +17,14 @@ export default class Matrix {
     rowStart?: number,
     colStart?: number,
     rowCount?: number,
-    colCount?: number
+    colCount?: number,
+    relationName?: string
   ) {
     this.m_data = []
     this.m_attr_name = []
     this.m_str_to_enum = []
     this.m_enum_to_str = []
+    this.m_relation_name = relationName
     if (that !== undefined) {
       for (let j = 0; j < rowCount; j++) {
         const rowSrc = that.row(rowStart + j) as number[]
