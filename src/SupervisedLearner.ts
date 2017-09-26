@@ -58,7 +58,7 @@ export default abstract class SupervisedLearner {
       return Math.sqrt(sse / features.rows())
     } else {
       // The label is nominal, so measure predictive accuracy
-      if (confusion !== undefined) {
+      if (confusion) {
         confusion.setSize(labelValues, labelValues)
         for (let i = 0; i < labelValues; i++) {
           confusion.setAttrName(i, labels.attrValue(0, i))
@@ -74,7 +74,7 @@ export default abstract class SupervisedLearner {
         }
         this.predict(feat, prediction)
         const pred = prediction[0] as number
-        if (confusion !== undefined) {
+        if (confusion) {
           confusion.set(targ, pred, confusion.get(targ, pred) + 1)
         }
         if (pred === targ) {
